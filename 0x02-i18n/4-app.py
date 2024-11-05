@@ -43,7 +43,7 @@ def index():
     """
     this is part of starting the app
     """
-    return render_template('4-index.html')
+    return render_template('0-index.html')
 
 
 if __name__ == '__main__':
