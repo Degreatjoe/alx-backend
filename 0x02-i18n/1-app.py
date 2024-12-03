@@ -1,36 +1,31 @@
 #!/usr/bin/env python3
-"""
-this modules starts a flask app but also adds the babel
-"""
+'''Task 0: Basic Flask app
+'''
+
 from flask import Flask, render_template
 from flask_babel import Babel
 
-app = Flask(__name__)
 
-
-# Step 3: Define Config Class
 class Config:
-    """
-    this class configures the babel
-    """
-    LANGUAGES = ["en", "fr"]  # Available languages
-    BABEL_DEFAULT_LOCALE = "en"  # Default locale
-    BABEL_DEFAULT_TIMEZONE = "UTC"  # Default timezone
+    '''Config class'''
+
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-app.config.from_object(Config)  # Use Config class for app configuration
+app = Flask(__name__)
+app.config.from_object(Config)
+app.url_map.strict_slashes = False
 
-# Step 4: Instantiate Babel
 babel = Babel(app)
 
 
 @app.route('/')
 def index():
-    """
-    the index where the app starts
-    """
-    return render_template('0-index.html')
+    '''default route'''
+    return render_template("1-index.html",)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
